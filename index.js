@@ -6,7 +6,8 @@ var transformify = require('transformify')
 exports = module.exports = function (file) {
  if (!exports.filePattern.test(file)) return through();  
 
- return transformify(expose.bind(null, exports.config));
+ var tx = transformify(expose.bind(null, exports.config));
+ return tx(file);
 }
 
 exports.config = (function () {
@@ -21,3 +22,4 @@ exports.config = (function () {
 })();
 
 exports.filePattern = /\.js$/;
+exports.expose = expose;

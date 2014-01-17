@@ -14,7 +14,7 @@ function getReplacements(id, globalVar, requires) {
       var node;
       if (s === id) { 
         node = requires.nodes[index]
-        acc.push({ from: node.range[0], to: node.range[1], id: id, code: 'window.' + globalVar });
+        acc.push({ from: node.range[0], to: node.range[1], id: id, code: '(window.' + globalVar  + ')' });
       }
       return acc;
     }, [])
@@ -28,7 +28,17 @@ function inspect(obj, depth) {
 
 var go = module.exports = 
 
-function (map, origSrc) {
+/**
+ * Replaces each require statement for ids found in the map with an assignment to the global value.
+ *
+ * @name expose
+ * @private
+ * @function
+ * @param {Object.<string, string>} map maps module names to the global under which they are actually exposed
+ * @param {string} origSrc the original source
+ * @return {string} source with globals exposed
+ */
+function expose(map, origSrc) {
   var regex, keys, id;
   var src = origSrc;
 
@@ -55,25 +65,14 @@ function (map, origSrc) {
   var offset = 0;
   return replacements
     .reduce(function(acc, replacement) {
-      var from = replacement.from
-        , to   = replacement.to
+      var from = replacement.from + offset
+        , to   = replacement.to + offset
         , code = replacement.code;
 
       // all ranges will be invalidated since we are changing the code
       // therefore keep track of the offset to adjust them in case we replace multiple requires
-      offset += (to - from) - code.length;
-      return src.slice(0, from) + code + src.slice(to);
+      var diff = code.length - (to - from);
+      offset += diff;
+      return acc.slice(0, from) + code + acc.slice(to);
     }, src);
-}
-
-// Test
-var fs = require('fs');
-
-if (!module.parent && typeof window === 'undefined') {
-  var src = fs.readFileSync(__dirname + '/test/fixtures/jquery-only.js', 'utf8');
-
-  var res = go({ 'jquery': '$' }, src);
-  console.log(src);
-  console.log('----');
-  console.log(res);
 }
