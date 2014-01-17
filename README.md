@@ -2,6 +2,14 @@
 
 browserify transform that exposes globals added via a script tag as modules so they can be required.
 
+```html
+<!-- index.html -->
+<head>
+  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/three.js/r61/three.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+  [..]
+```
+
 ```js
 // main.js
 var $ = require('jquery')

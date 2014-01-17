@@ -20,7 +20,7 @@
     "tap": "~0.4.3",
     "browserify": "~3.20.0"
   },
-  "keywords": [],
+  "keywords": [ "browserify", "transform", "expose", "window", "global", "require", "shim" ],
   "author": {
     "name": "Thorsten Lorenz",
     "email": "thlorenz@gmx.de",
