@@ -1,6 +1,6 @@
 {
   "name": "exposify",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "browserify transform that exposes globals added via a script tag as modules so they can be required.",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,15 @@
     "tap": "~0.4.3",
     "browserify": "~3.20.0"
   },
-  "keywords": [ "browserify", "transform", "expose", "window", "global", "require", "shim" ],
+  "keywords": [
+    "browserify",
+    "transform",
+    "expose",
+    "window",
+    "global",
+    "require",
+    "shim"
+  ],
   "author": {
     "name": "Thorsten Lorenz",
     "email": "thlorenz@gmx.de",
