@@ -12,9 +12,9 @@
   },
   "homepage": "https://github.com/thlorenz/exposify",
   "dependencies": {
-    "detective": "git://github.com/thlorenz/node-detective#parse-opts",
     "transformify": "~0.1.1",
-    "through2": "~0.4.0"
+    "through2": "~0.4.0",
+    "detective": "~2.3.0"
   },
   "devDependencies": {
     "tap": "~0.4.3",
