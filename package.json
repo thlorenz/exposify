@@ -1,6 +1,6 @@
 {
   "name": "exposify",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "browserify transform that exposes globals added via a script tag as modules so they can be required.",
   "main": "index.js",
   "scripts": {
