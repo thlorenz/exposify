@@ -47,7 +47,7 @@ function expose(map, origSrc) {
   // ensure that at least one of the require statements we want to replace is in the code
   // before we perform the expensive operation of finding them by creating an AST
   var hasMatchingRequires = keys.some(function (id) {
-    regex = new RegExp('require\\([\'"]' + id + '[\'"]\\)');
+    regex = new RegExp('require\\(\\s*[\'"]' + id + '[\'"]\\s*\\)');
     return regex.test(src)
   });
   if (!hasMatchingRequires) return src;
