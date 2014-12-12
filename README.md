@@ -22,23 +22,30 @@ console.log('jquery version: ', $().jquery);
 #### Building via JavaScript
 
 ```js
-var browserify = require('browserify')
-  , exposify   = require('exposify')
+var browserify = require('browserify');
 
 // configure what we want to expose
-exposify.config = { jquery: '$', three: 'THREE' };
+var exposeConfig = { expose: { jquery: '$', three: 'THREE' } };
 
 browserify()
   .require(require.resolve('./main'), { entry: true })
-  .transform(exposify)
+  .transform('exposify', exposeConfig)
   .bundle({ debug: true })
   .pipe(fs.createWriteStream(path.join(__dirname, 'bundle.js'), 'utf8'))
 ```
 
 #### Building via Commandline
 
+Using the `EXPOSIFY_CONFIG` environment variable:
+
 ```sh
 EXPOSIFY_CONFIG='{ "jquery": "$", "three": "THREE" }' browserify --debug -t exposify main.js > bundle.js
+```
+
+Or using a Browserify transform option:
+
+```sh
+browserify --debug -t [ exposify --expose [ --jquery=$ --three=THREE ] ] exposify main > bundle.js
 ```
 
 Or use it via [browserify-shim](https://github.com/thlorenz/browserify-shim) which allows you to provide exposify config
