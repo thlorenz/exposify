@@ -22,15 +22,14 @@ console.log('jquery version: ', $().jquery);
 #### Building via JavaScript
 
 ```js
-var browserify = require('browserify')
-  , exposify   = require('exposify')
+var browserify = require('browserify');
 
 // configure what we want to expose
-exposify.config = { jquery: '$', three: 'THREE' };
+var exposeConfig = { expose: { jquery: '$', three: 'THREE' } };
 
 browserify()
   .require(require.resolve('./main'), { entry: true })
-  .transform(exposify)
+  .transform(exposeConfig, 'exposify')
   .bundle({ debug: true })
   .pipe(fs.createWriteStream(path.join(__dirname, 'bundle.js'), 'utf8'))
 ```
