@@ -12,9 +12,10 @@
   },
   "homepage": "https://github.com/thlorenz/exposify",
   "dependencies": {
-    "transformify": "~0.1.1",
+    "detective": "~2.3.0",
+    "has-require": "~1.1.0",
     "through2": "~0.4.0",
-    "detective": "~2.3.0"
+    "transformify": "~0.1.1"
   },
   "devDependencies": {
     "tap": "~0.4.3",
