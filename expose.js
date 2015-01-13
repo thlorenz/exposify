@@ -1,6 +1,7 @@
 'use strict';
 
-var detective = require('detective');
+var detective = require('detective')
+  , hasRequire = require('has-require');
 
 function rangeComparator(a, b) {
   return a.from > b.from ? 1 : -1;
@@ -46,10 +47,8 @@ function expose(map, origSrc) {
 
   // ensure that at least one of the require statements we want to replace is in the code
   // before we perform the expensive operation of finding them by creating an AST
-  var hasMatchingRequires = keys.some(function (id) {
-    regex = new RegExp('require\\(\\s*[\'"]' + id + '[\'"]\\s*\\)');
-    return regex.test(src)
-  });
+  var requireChecker = new hasRequire.Checker(src);
+  var hasMatchingRequires = keys.some(requireChecker.has, requireChecker);
   if (!hasMatchingRequires) return src;
 
   var requires = detective.find(src, { nodes: true, parse: { range: true } });
