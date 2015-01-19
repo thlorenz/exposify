@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "tap": "~0.4.3",
-    "browserify": "~3.20.0"
+    "browserify": "~7.0.0"
   },
   "keywords": [
     "browserify",
