@@ -10,11 +10,18 @@ function rangeComparator(a, b) {
 function getReplacements(id, globalVar, requires) {
   if (!~requires.strings.indexOf(id)) return [];
 
+  // We only care about string nodes like (require('foo')) here. If you include
+  // non-literal nodes this function will return mismatched requires, since it
+  // assumes requires.strings[0] corresponds to requires.nodes[0]
+  var stringNodes = requires.nodes.filter(function(node) {
+    return (node.arguments[0].type === 'Literal');
+  });
+
   var ranges = requires.strings
     .reduce(function (acc, s, index) {
       var node;
       if (s === id) { 
-        node = requires.nodes[index]
+        node = stringNodes[index]
         acc.push({ from: node.range[0], to: node.range[1], id: id, code: '(window.' + globalVar  + ')' });
       }
       return acc;
