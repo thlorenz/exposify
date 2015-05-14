@@ -18,7 +18,9 @@ module.exports = function run(map, file, window, cb) {
     cb = arguments[4];
   }
 
-  // If ignoreMissing is true, set ctx.require to a no-op
+  // If ignoreMissing is true, set ctx.require to a no-op. This needed for the
+  // jquery-plus-non-literals test, as it has require statements that don't get
+  // converted with browserify-shim.
   if ('ignoreMissing' in opts) {
     ctx.require = function() {};
   }
