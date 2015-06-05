@@ -75,6 +75,9 @@ Or use [browserify-shim](https://github.com/thlorenz/browserify-shim) which can 
 <div class="description">
 <p>The config which is used by exposify to determine which require statemtents to replace and how.
 You need to set this or provide it via the <code>EXPOSIFY_CONFIG</code> environment variable.</p>
+<pre><code class="lang-js"> var b = browserify();
+// setting via transform argument
+b.transform('exposify', { expose: { jquery: '$', three: 'THREE' } });</code></pre>
 <pre><code class="lang-js"> // setting from javascript
 exposify.config = { jquery: '$', three: 'THREE' };</code></pre>
 <pre><code class="lang-sh"> # setting from command line
@@ -86,7 +89,7 @@ EXPOSIFY_CONFIG='{ &quot;jquery&quot;: &quot;$&quot;, &quot;three&quot;: &quot;T
 <li>
 <a href="https://github.com/thlorenz/exposify/blob/master/index.js">index.js</a>
 <span>, </span>
-<a href="https://github.com/thlorenz/exposify/blob/master/index.js#L29">lineno 29</a>
+<a href="https://github.com/thlorenz/exposify/blob/master/index.js#L33">lineno 33</a>
 </li>
 </ul></dd>
 </dl>
@@ -104,7 +107,7 @@ EXPOSIFY_CONFIG='{ &quot;jquery&quot;: &quot;$&quot;, &quot;three&quot;: &quot;T
 <li>
 <a href="https://github.com/thlorenz/exposify/blob/master/index.js">index.js</a>
 <span>, </span>
-<a href="https://github.com/thlorenz/exposify/blob/master/index.js#L67">lineno 67</a>
+<a href="https://github.com/thlorenz/exposify/blob/master/index.js#L78">lineno 78</a>
 </li>
 </ul></dd>
 </dl>
@@ -122,7 +125,7 @@ EXPOSIFY_CONFIG='{ &quot;jquery&quot;: &quot;$&quot;, &quot;three&quot;: &quot;T
 <li>
 <a href="https://github.com/thlorenz/exposify/blob/master/index.js">index.js</a>
 <span>, </span>
-<a href="https://github.com/thlorenz/exposify/blob/master/index.js#L60">lineno 60</a>
+<a href="https://github.com/thlorenz/exposify/blob/master/index.js#L71">lineno 71</a>
 </li>
 </ul></dd>
 </dl>
@@ -130,7 +133,7 @@ EXPOSIFY_CONFIG='{ &quot;jquery&quot;: &quot;$&quot;, &quot;three&quot;: &quot;T
 </dl>
 <dl>
 <dt>
-<h4 class="name" id="exposify"><span class="type-signature"></span>exposify<span class="signature">(file)</span><span class="type-signature"> &rarr; {TransformStream}</span></h4>
+<h4 class="name" id="exposify"><span class="type-signature"></span>exposify<span class="signature">(file, <span class="optional">opts</span>)</span><span class="type-signature"> &rarr; {TransformStream}</span></h4>
 </dt>
 <dd>
 <div class="description">
@@ -142,6 +145,7 @@ EXPOSIFY_CONFIG='{ &quot;jquery&quot;: &quot;$&quot;, &quot;three&quot;: &quot;T
 <tr>
 <th>Name</th>
 <th>Type</th>
+<th>Argument</th>
 <th class="last">Description</th>
 </tr>
 </thead>
@@ -151,7 +155,19 @@ EXPOSIFY_CONFIG='{ &quot;jquery&quot;: &quot;$&quot;, &quot;three&quot;: &quot;T
 <td class="type">
 <span class="param-type">string</span>
 </td>
+<td class="attributes">
+</td>
 <td class="description last"><p>file whose content is to be transformed</p></td>
+</tr>
+<tr>
+<td class="name"><code>opts</code></td>
+<td class="type">
+<span class="param-type">Object</span>
+</td>
+<td class="attributes">
+&lt;optional><br>
+</td>
+<td class="description last"><p>(exposify config), defaults to exposify.config or $EXPOSIFY_CONFIG</p></td>
 </tr>
 </tbody>
 </table>
