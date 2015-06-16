@@ -12,7 +12,6 @@
   },
   "homepage": "https://github.com/thlorenz/exposify",
   "dependencies": {
-    "detective": "~4.0.0",
     "globo": "~1.0.0",
     "has-require": "~1.1.0",
     "map-obj": "~1.0.1",
