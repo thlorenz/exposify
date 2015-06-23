@@ -13,7 +13,6 @@
   "homepage": "https://github.com/thlorenz/exposify",
   "dependencies": {
     "globo": "~1.0.0",
-    "has-require": "~1.2.1",
     "map-obj": "~1.0.1",
     "replace-requires": "~1.0.3",
     "through2": "~0.4.0",
