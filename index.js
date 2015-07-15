@@ -26,6 +26,11 @@ function exposify(file, opts) {
    throw new Error('Please pass { expose: { ... } } to transform, set exposify.config or $EXPOSIFY_CONFIG so exposify knows what to expose');
   }
 
+  // using transform options will pass non-option arguments as array on _
+  if (Array.isArray(opts.expose._)) {
+    delete opts.expose._
+  }
+
   var tx = transformify(expose.bind(null, opts.expose));
   return tx(file);
 };
