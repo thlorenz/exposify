@@ -45,7 +45,7 @@ EXPOSIFY_CONFIG='{ "jquery": "$", "three": "THREE" }' browserify --debug -t expo
 Or using a Browserify transform option:
 
 ```sh
-browserify --debug -t [ exposify --expose [ --jquery=$ --three=THREE ] ] exposify main > bundle.js
+browserify --debug -t [ exposify --expose [ --jquery $ --three THREE ] ] main.js > bundle.js
 ```
 
 Or use [browserify-shim](https://github.com/thlorenz/browserify-shim) which can [configure exposify in `package.json`](https://github.com/thlorenz/browserify-shim#a-expose-global-variables-via-global) among other features.
