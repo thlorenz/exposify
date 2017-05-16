@@ -78,7 +78,7 @@ exports.config = (function () {
  * 
  * @name exposify::filePattern
  */
-exports.filePattern = /\.js$/;
+exports.filePattern = /\.jsx?$/;
 
 /**
  * Exposes the expose function that operates on a string
